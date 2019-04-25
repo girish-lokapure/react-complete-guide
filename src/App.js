@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Person from "./Person/Person";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    number: 29,
+    name: "girish"
+  };
+  changeNumber = () => {
+    this.setState({
+      number: Math.random()
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, {this.state.name}</h1>
+        <Person number={this.state.number} />
+        <button onClick={this.changeNumber}>change Number</button>
+      </div>
+    );
+  }
 }
 
 export default App;
